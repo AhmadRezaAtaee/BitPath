@@ -1,0 +1,16 @@
+{
+  "name": "bit-path",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "repository": "https://github.com/AhmadRezaAtaee/BitPath.git",
+  "author": "AhmadRezaAtaee <ahmadr.ataee@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "redis": "^4.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
