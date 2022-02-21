@@ -5,12 +5,18 @@
   "repository": "https://github.com/AhmadRezaAtaee/BitPath.git",
   "author": "AhmadRezaAtaee <ahmadr.ataee@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "nodemon .",
+    "test": "mocha"
+  },
   "dependencies": {
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
     "redis": "^4.0.3"
   },
   "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^9.2.1",
     "nodemon": "^2.0.15"
   }
 }
