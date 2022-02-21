@@ -1,19 +1,34 @@
 const { createClient } = require('redis')
+const {
+    REDIS_LOG,
+    REDIS_HOST,
+    REDIS_PORT,
+    REDIS_USERNAME,
+    REDIS_PASSWORD,
+} = process.env
 
 const client = createClient({
     socket: {
-        host: process.env.REDIS_HOST,
-        port: process.env.REDIS_PORT || undefined,
+        host: REDIS_HOST,
+        port: REDIS_PORT || undefined,
     },
-    username: process.env.REDIS_USERNAME,
-    password: process.env.REDIS_PASSWORD,
+    username: REDIS_USERNAME,
+    password: REDIS_PASSWORD,
 });
 
 client.on('error', error => {
-    console.log(error)
+    client.disconnect()
+    console.error("Redis Connection: ", error);
     process.exit(1)
 })
 
-client.on('connect', () => console.log("Redis Connection: OK"))
+client.on('connect', () => {
+    if (REDIS_LOG) {
+        console.log("Redis Connection: OK");
+    }
+    return
+})
 
-module.exports = client.connect().then(() => client)
+client.connect()
+
+module.exports = client
