@@ -26,4 +26,8 @@ describe('Repository', () => {
 		const url = await Urls.insert(full)
 		expect(url.fullUrl).equal(full)
 	});
+
+	after('Delete all keys', async () => {
+		expect(await db.FLUSHALL()).string('O')
+	})
 });
