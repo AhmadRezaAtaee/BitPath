@@ -27,6 +27,12 @@ describe('Repository', () => {
 		expect(url.fullUrl).equal(full)
 	});
 
+	it('Get Url', async () => {
+		expect(await Urls.get('123456')).null
+		const url = await Urls.insert(fullUrl)
+		expect((await Urls.get(url.code)).code).equal(url.code)
+	});
+
 	after('Delete all keys', async () => {
 		expect(await db.FLUSHALL()).string('O')
 	})
