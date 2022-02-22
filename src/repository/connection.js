@@ -5,6 +5,7 @@ const {
     REDIS_PORT,
     REDIS_USERNAME,
     REDIS_PASSWORD,
+    REDIS_DB
 } = process.env
 
 const client = createClient({
@@ -14,6 +15,7 @@ const client = createClient({
     },
     username: REDIS_USERNAME,
     password: REDIS_PASSWORD,
+    database: +REDIS_DB || 0
 });
 
 client.on('error', error => {
@@ -22,13 +24,17 @@ client.on('error', error => {
     process.exit(1)
 })
 
-client.on('connect', () => {
+client.on('connect', async () => {
     if (REDIS_LOG) {
         console.log("Redis Connection: OK");
+    }
+    if (process.argv.includes('--create-index')) {
+        require('./db-index').create()
     }
     return
 })
 
 client.connect()
+
 
 module.exports = client
