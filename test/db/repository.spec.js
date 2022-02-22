@@ -39,6 +39,6 @@ describe('Repository', () => {
 	});
 
 	after('Delete all keys', async () => {
-		expect(await db.FLUSHALL()).string('O')
+		expect(await db.FLUSHALL()).string('OK')
 	})
 });
