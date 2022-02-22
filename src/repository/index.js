@@ -27,7 +27,17 @@ const get = async (code) => {
     return await db.json.get(code);
 }
 
+/**
+ * function for get rows or record from urls table in db by url code
+ * @param {Number} urlCode - url id for get row
+ * @return {Object} - this function return object as changes result
+ */
+const updateViews = async (code) => {
+    return await db.json.NUMINCRBY(code, '$.views', 1)
+}
+
 module.exports = {
     insert,
     get,
+    updateViews,
 };
