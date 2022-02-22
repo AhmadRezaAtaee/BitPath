@@ -33,6 +33,11 @@ describe('Repository', () => {
 		expect((await Urls.get(url.code)).code).equal(url.code)
 	});
 
+	it('Update Url Views', async () => {
+		const url = await Urls.insert(fullUrl)
+		expect(new Array(await Urls.updateViews(url.code)).flat()[0]).equal(1)
+	});
+
 	after('Delete all keys', async () => {
 		expect(await db.FLUSHALL()).string('O')
 	})
