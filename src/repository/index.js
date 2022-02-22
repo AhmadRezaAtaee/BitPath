@@ -18,6 +18,16 @@ const insert = async (fullUrl) => {
     return db.json.get(random);
 }
 
+/**
+ * function for get rows or record from urls table in db by url id or short code
+ * @param {Number|String} codeId - url code (unique string) or url id for get row
+ * @return {Object} - this function return row or record object inserted
+ */
+const get = async (code) => {
+    return await db.json.get(code);
+}
+
 module.exports = {
     insert,
+    get,
 };
