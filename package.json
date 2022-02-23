@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon .",
-    "start:redis": "docker run -di --name redis -p 6379:6379 redislabs/redismod",
+    "start:redis": "docker run -di --rm --name redis -p 6379:6379 redislabs/redismod",
     "test": "mocha"
   },
   "dependencies": {
