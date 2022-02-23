@@ -9,6 +9,9 @@ class ShortLink {
     }
     views = 0
     createdAt = new Date(Date.now())
+    static get fields() {
+        return ['fullUrl', 'code', 'views', 'createdAt']
+    }
 }
 
 module.exports = ShortLink
