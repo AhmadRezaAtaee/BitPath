@@ -1,8 +1,5 @@
-const Urls = require('../../src/repository/index');
-const db = require('../../src/repository/connection');
-const indexes = require('../../src/repository/db-index');
+const { ShortLink, indexes, client: db, ...Urls } = require('../../src/repository');
 const { expect } = require('chai');
-const ShortLink = require('../../src/repository/short-link');
 
 const fullUrl = 'https://redis.io/commands'
 const genCode = ShortLink.genCode

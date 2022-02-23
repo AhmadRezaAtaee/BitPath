@@ -28,7 +28,7 @@ client.on('connect', async () => {
     if (REDIS_LOG) {
         console.log("Redis Connection: OK");
     }
-    require('./db-index').create()
+    require('./indexes').create()
     return
 })
 

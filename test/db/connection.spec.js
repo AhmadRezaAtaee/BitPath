@@ -1,4 +1,4 @@
-const redis = require('../../src/repository/connection');
+const redis = require('../../src/repository').client;
 const { expect } = require('chai');
 
 const testKey = 'test'
