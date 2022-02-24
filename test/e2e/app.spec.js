@@ -27,6 +27,12 @@ describe('App - E2E', () => {
 		expect(res.status).equal(422)
 	});
 
+	it('Get Short Url', async () => {
+		const { body } = await request.post(api).send({ url: 'test.com' })
+		const res = await request.get(api + body.code)
+		expect(res.body.code).equal(body.code)
+	});
+
 	after(async () => {
 		expect(await client.FLUSHDB()).string('OK')
 	});
