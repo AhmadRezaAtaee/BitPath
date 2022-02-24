@@ -7,5 +7,7 @@ const app = require('express')()
 middlewares.forEach(middleware => {
 	app.use(middleware)
 })
+app.use(redirectRoute)
+app.use(urlsRoute)
 
 app.listen(process.env.SERVER_PORT || 3000)
