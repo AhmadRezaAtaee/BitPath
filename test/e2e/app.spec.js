@@ -22,6 +22,11 @@ describe('App - E2E', () => {
 		expect(res.body.views).equal(0)
 	});
 
+	it('Create Short Url - Validation Error', async () => {
+		const res = await request.post(api).send({ url: 'test com' })
+		expect(res.status).equal(422)
+	});
+
 	after(async () => {
 		expect(await client.FLUSHDB()).string('OK')
 	});
