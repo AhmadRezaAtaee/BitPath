@@ -25,7 +25,7 @@ const getQuerySchema = {
 }
 
 router
-    .post(prefix, (req, res) => {
+    .post(prefix, async (req, res) => {
         let url = req.body.url;
         // check the validity of the url entered by the client
         if (!validUrl(url)) {
@@ -34,14 +34,14 @@ router
         }
         try {
             // register a record and url to shorten and save in the database
-            res.status(200).send(Urls.insert(url));
+            res.status(200).send(await Urls.insert(url));
         } catch (error) {
             res.status(500).send({ error: "something went wrong!" });
             console.log(error.message);
         }
     })
 
-    .get(prefix, (req, res) => {
+    .get(prefix, async (req, res) => {
         // check the validity of the parameters in the request query
         // ff there is no parameter in the query, it is ignored by function
         let { result, message } = validQuery(getQuerySchema, req.query);
@@ -53,17 +53,17 @@ router
             /* Get all the urls in the database. If the parameter is in the query of the request,
             after being confirmed, the filtered information will be retrieved,
             otherwise, when the query parameters are empty, all records will be returned. */
-            res.status(200).send(Urls.all(req.query));
+            res.status(200).send(await Urls.all(req.query));
         } catch (error) {
             res.status(500).send({ error: "something went wrong!" });
             console.log(error.message);
         }
     })
 
-    .get(`${prefix}/:codeId`, (req, res) => {
+    .get(`${prefix}/:codeId`, async (req, res) => {
         try {
             // get a registered url record using its id or abbreviated code
-            let data = Urls.get(req.params.codeId)
+            let data = await Urls.get(req.params.codeId)
             res.send(data ? (res.status(200), data) : (res.status(404), { error: 'not find!' }));
         } catch (error) {
             res.status(500).send({ error: "something went wrong!" });
