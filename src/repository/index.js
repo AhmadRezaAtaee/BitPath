@@ -7,5 +7,5 @@ module.exports = {
 	client,
 	ShortLink,
 	indexes,
-	...repository,
+	Urls: repository,
 }
