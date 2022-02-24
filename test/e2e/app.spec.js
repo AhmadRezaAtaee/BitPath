@@ -33,6 +33,11 @@ describe('App - E2E', () => {
 		expect(res.body.code).equal(body.code)
 	});
 
+	it('Get All Short Urls', async () => {
+		const res = await request.get(api)
+		expect(res.body.total).equal(2)
+	});
+
 	after(async () => {
 		expect(await client.FLUSHDB()).string('OK')
 	});
