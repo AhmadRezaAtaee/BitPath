@@ -1,4 +1,4 @@
-const { ShortLink, indexes, client: db, ...Urls } = require('../../src/repository');
+const { ShortLink, indexes, client: db, Urls } = require('../../src/repository');
 const { expect } = require('chai');
 
 const fullUrl = 'https://redis.io/commands'
