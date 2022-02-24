@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { join } = require('path')
-const Urls = require('../database/urls-repository');
+const { Urls } = require('../repository');
 
 router
     .get(join(process.env.REDIRECT_PATH || '/', '/:shortUrl'), (req, res) => {
